@@ -1,6 +1,6 @@
 version: '3.3'
 services:
-  db:
+  mysql:
     image: mysql:5.7
     restart: always
     environment:
@@ -12,8 +12,6 @@ services:
       - '3306:3306'
     expose:
       - '3306'
-    volumes:
-      - my-db:/var/lib/mysql
 
   redis:
     image: bitnami/redis:latest
@@ -26,3 +24,7 @@ services:
     networks:
       - java_network
     tty: true
+
+networks:
+  java_network:
+    driver: bridge
